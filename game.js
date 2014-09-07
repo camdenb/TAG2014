@@ -10,7 +10,7 @@ MainState.Boot.prototype = {
 	//preloadBar: Phaser.Sprite,
 
 	preload: function() {
-		this.load.image('preloadBar', 'assets/sprites/preloadBar.png');
+		//this.load.image('preloadBar', 'assets/sprites/preloadBar.png');
 	},
 
 	create: function() {
@@ -27,16 +27,6 @@ MainState.Preloader.prototype = {
 
 	preload: function() {
 
-		percentText = this.add.bitmapText(this.world.centerX, this.world.centerY - 25, 'carrier', 0 + '%', 50);
-		centerText(percentText);
-
-		centerText(this.add.bitmapText(this.world.centerX - 200, this.world.centerY + 200, 'carrier', 'Loading', 40));
-
-		game.load.image('rect', 'assets/sprites/shapes/rect.png');
-		setBGRandomColor();
-		this.load.onFileComplete.add(function(){
-			percentText.setText(game.load.progress + '%');
-		});
 		inputHandler.preload();
 
 		level.preload();

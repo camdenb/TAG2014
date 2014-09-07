@@ -1,8 +1,8 @@
-MainState.Overlay = function(game) {
+MainState.Player = function(game) {
 };
 
 
-MainState.Overlay.prototype = {
+MainState.Player.prototype = {
 
 	preload: function() {
 		
