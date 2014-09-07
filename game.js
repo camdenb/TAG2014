@@ -30,13 +30,12 @@ MainState.Preloader.prototype = {
 		inputHandler.preload();
 
 		level.preload();
-	    player.preload();
 	    overlay.preload();
 	},
 
 	create: function() {
 		//game.stage.smoothed = false;
-		game.state.start('menu_main');
+		game.state.start('gameplay');
 		
 	},
 
@@ -52,12 +51,9 @@ MainState.Gameplay.prototype = {
 
 	create: function() {
 
-		gameObjects = new Phaser.Group(this, undefined, 'gameObjects');
-
 		console.log('gameplay started');
 		inputHandler.create();
 		level.create();
-	    player.create();
 	    overlay.create();
 
 	},
@@ -65,7 +61,6 @@ MainState.Gameplay.prototype = {
 	update: function() {
 		inputHandler.update();
 		level.update();
-	    player.update();
 	    overlay.update();
 	},
 

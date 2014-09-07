@@ -2,15 +2,18 @@
 <html lang="en"> 
 <head> 
 	<meta charset="UTF-8" />
-	<title>PIXEL PARTY</title>
+	<title>TAG 2014</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
 	<script type="text/javascript" src="phaser.js"></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="input.js"></script>
     <script type="text/javascript" src="overlay.js"></script>
     <script type="text/javascript" src="menus.js"></script>
     <script type="text/javascript" src="level.js"></script>
-    <script type="text/javascript" src="player.js"></script>
-
+	
+	
 
     <style type="text/css">
         body {
@@ -33,7 +36,6 @@
 //change back to AUTO when done debugging
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', null, false, false);
 
-var player = new MainState.Player(game);
 var level = new MainState.Level(game);
 var inputHandler = new MainState.Input(game);
 var overlay = new MainState.Overlay(game);
