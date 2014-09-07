@@ -31,23 +31,23 @@
 <script type="text/javascript">
 
 //change back to AUTO when done debugging
-var gamevar = new Phaser.Game(800, 600, Phaser.AUTO, '', null, false, false);
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', null, false, false);
 
-var player = new MainState.Player(gamevar);
-var level = new MainState.Level(gamevar);
-var inputHandler = new MainState.Input(gamevar);
-var overlay = new MainState.Overlay(gamevar);
+var player = new MainState.Player(game);
+var level = new MainState.Level(game);
+var inputHandler = new MainState.Input(game);
+var overlay = new MainState.Overlay(game);
 
 var running = true;
 
 //alert('game running');
 
-gamevar.state.add('boot', MainState.Boot);
-gamevar.state.add('preload', MainState.Preloader);
-gamevar.state.add('menu_main', MainState.Menus);
-gamevar.state.add('gameplay', MainState.Gameplay);
+game.state.add('boot', MainState.Boot);
+game.state.add('preload', MainState.Preloader);
+game.state.add('menu_main', MainState.Menus);
+game.state.add('gameplay', MainState.Gameplay);
 
-gamevar.state.start('boot');
+game.state.start('boot');
 
 // function update() {
 //     level.update();

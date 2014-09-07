@@ -14,7 +14,7 @@ MainState.Boot.prototype = {
 	},
 
 	create: function() {
-		gamevar.state.start('preload');
+		game.state.start('preload');
 	},
 
 	update: function() {
@@ -32,10 +32,10 @@ MainState.Preloader.prototype = {
 
 		centerText(this.add.bitmapText(this.world.centerX - 200, this.world.centerY + 200, 'carrier', 'Loading', 40));
 
-		gamevar.load.image('rect', 'assets/sprites/shapes/rect.png');
+		game.load.image('rect', 'assets/sprites/shapes/rect.png');
 		setBGRandomColor();
 		this.load.onFileComplete.add(function(){
-			percentText.setText(gamevar.load.progress + '%');
+			percentText.setText(game.load.progress + '%');
 		});
 		inputHandler.preload();
 
@@ -45,8 +45,8 @@ MainState.Preloader.prototype = {
 	},
 
 	create: function() {
-		//gamevar.stage.smoothed = false;
-		gamevar.state.start('menu_main');
+		//game.stage.smoothed = false;
+		game.state.start('menu_main');
 		
 	},
 
@@ -81,25 +81,25 @@ MainState.Gameplay.prototype = {
 
 	render: function() {
 
-		// gamevar.debug.quadTree(gamevar.physics.arcade.quadTree);
+		// game.debug.quadTree(game.physics.arcade.quadTree);
 
-		//gamevar.debug.text("Difficulty: " + difficulty, 500, 100);
-		//gamevar.debug.text("Difficulty stage: " + difficultyStage, 500, 130);
-		//gamevar.debug.text("coins this round: " + coinsCollectedThisRound, 200, 100);
+		//game.debug.text("Difficulty: " + difficulty, 500, 100);
+		//game.debug.text("Difficulty stage: " + difficultyStage, 500, 130);
+		//game.debug.text("coins this round: " + coinsCollectedThisRound, 200, 100);
 		
-		// gamevar.debug.text("dead?: " + lifeEmpty, 200, 100);
-		// gamevar.debug.soundInfo(currentSong, 20, 32);
-		// bullets.forEachAlive(function(bullet){gamevar.debug.body(bullet);});
-	 //    gamevar.debug.text("Current Combo: " + currentCombo, 300, 300);
-	 //    gamevar.debug.text("Max Combo: " + maxCombo, 300, 332);
-	 //    gamevar.debug.text("Current Mode: " + modeString, 32, 32);
-	 //    gamevar.debug.text("Current Time: " + (currentTimeCountdown), 32, 64);
-	 //    gamevar.debug.text("Score: " + score, 600, 64);
-	 //    gamevar.debug.text("High Score: " + highestScore, 600, 96);
+		// game.debug.text("dead?: " + lifeEmpty, 200, 100);
+		// game.debug.soundInfo(currentSong, 20, 32);
+		// bullets.forEachAlive(function(bullet){game.debug.body(bullet);});
+	 //    game.debug.text("Current Combo: " + currentCombo, 300, 300);
+	 //    game.debug.text("Max Combo: " + maxCombo, 300, 332);
+	 //    game.debug.text("Current Mode: " + modeString, 32, 32);
+	 //    game.debug.text("Current Time: " + (currentTimeCountdown), 32, 64);
+	 //    game.debug.text("Score: " + score, 600, 64);
+	 //    game.debug.text("High Score: " + highestScore, 600, 96);
 	    //game.debug.text("health:" + playerHealth, playerSprite.x, playerSprite.y - 10);
 
-	    gamevar.time.advancedTiming = true;
-	    //gamevar.debug.text("fps: " + gamevar.time.fps, 600, 32);
+	    game.time.advancedTiming = true;
+	    //game.debug.text("fps: " + game.time.fps, 600, 32);
 	},
 
 	shutdown: function() {
