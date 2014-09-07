@@ -51,8 +51,6 @@ function spawnAnimal() {
 	var animal = animals.getFirstExists(false);
 	if(animal){ //if animal?
 		animal.reset(game.rnd.integerInRange(300, 400), game.rnd.integerInRange(300, 400));
-		
-
 	}
 }
 

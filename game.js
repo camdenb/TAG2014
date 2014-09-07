@@ -1,0 +1,110 @@
+MainState = { };
+
+MainState.Boot = function(game){};
+MainState.Preloader = function(game){};
+MainState.Gameplay = function(game){};
+
+
+MainState.Boot.prototype = {
+
+	//preloadBar: Phaser.Sprite,
+
+	preload: function() {
+		this.load.image('preloadBar', 'assets/sprites/preloadBar.png');
+	},
+
+	create: function() {
+		gamevar.state.start('preload');
+	},
+
+	update: function() {
+
+	}
+
+};
+
+MainState.Preloader.prototype = {
+
+	preload: function() {
+
+		percentText = this.add.bitmapText(this.world.centerX, this.world.centerY - 25, 'carrier', 0 + '%', 50);
+		centerText(percentText);
+
+		centerText(this.add.bitmapText(this.world.centerX - 200, this.world.centerY + 200, 'carrier', 'Loading', 40));
+
+		gamevar.load.image('rect', 'assets/sprites/shapes/rect.png');
+		setBGRandomColor();
+		this.load.onFileComplete.add(function(){
+			percentText.setText(gamevar.load.progress + '%');
+		});
+		inputHandler.preload();
+
+		level.preload();
+	    player.preload();
+	    overlay.preload();
+	},
+
+	create: function() {
+		//gamevar.stage.smoothed = false;
+		gamevar.state.start('menu_main');
+		
+	},
+
+	update: function() {
+
+	}
+
+};
+
+
+MainState.Gameplay.prototype = {
+
+
+	create: function() {
+
+		gameObjects = new Phaser.Group(this, undefined, 'gameObjects');
+
+		console.log('gameplay started');
+		inputHandler.create();
+		level.create();
+	    player.create();
+	    overlay.create();
+
+	},
+
+	update: function() {
+		inputHandler.update();
+		level.update();
+	    player.update();
+	    overlay.update();
+	},
+
+	render: function() {
+
+		// gamevar.debug.quadTree(gamevar.physics.arcade.quadTree);
+
+		//gamevar.debug.text("Difficulty: " + difficulty, 500, 100);
+		//gamevar.debug.text("Difficulty stage: " + difficultyStage, 500, 130);
+		//gamevar.debug.text("coins this round: " + coinsCollectedThisRound, 200, 100);
+		
+		// gamevar.debug.text("dead?: " + lifeEmpty, 200, 100);
+		// gamevar.debug.soundInfo(currentSong, 20, 32);
+		// bullets.forEachAlive(function(bullet){gamevar.debug.body(bullet);});
+	 //    gamevar.debug.text("Current Combo: " + currentCombo, 300, 300);
+	 //    gamevar.debug.text("Max Combo: " + maxCombo, 300, 332);
+	 //    gamevar.debug.text("Current Mode: " + modeString, 32, 32);
+	 //    gamevar.debug.text("Current Time: " + (currentTimeCountdown), 32, 64);
+	 //    gamevar.debug.text("Score: " + score, 600, 64);
+	 //    gamevar.debug.text("High Score: " + highestScore, 600, 96);
+	    //game.debug.text("health:" + playerHealth, playerSprite.x, playerSprite.y - 10);
+
+	    gamevar.time.advancedTiming = true;
+	    //gamevar.debug.text("fps: " + gamevar.time.fps, 600, 32);
+	},
+
+	shutdown: function() {
+
+		// console.log('destroyed game stuff');
+	}
+
+};
