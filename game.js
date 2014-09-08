@@ -35,7 +35,7 @@ MainState.Preloader.prototype = {
 
 	create: function() {
 		//game.stage.smoothed = false;
-		game.state.start('gameplay');
+		game.state.start('menu_main');
 		
 	},
 

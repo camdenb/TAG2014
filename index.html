@@ -46,7 +46,8 @@ var running = true;
 
 game.state.add('boot', MainState.Boot);
 game.state.add('preload', MainState.Preloader);
-game.state.add('menu_main', MainState.Menus);
+game.state.add('menu_main', MainState.Menus.Main);
+game.state.add('menu_gameover', MainState.Menus.Gameover);
 game.state.add('gameplay', MainState.Gameplay);
 
 game.state.start('boot');

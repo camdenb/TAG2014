@@ -5,7 +5,8 @@ var currentAnimal, breeder, jail, animals, babies;
 var scoreText, animalsBreedingText;
 var score = 0;
 var animalsBreeding = 0;
-var babyEvent;
+var babyEvent, countdown;
+var timeLeft = 61;
 var lastBabyTime = 0;
 
 MainState.Level.prototype = {
@@ -45,20 +46,28 @@ MainState.Level.prototype = {
 		spawnAnimal();
 
 		scoreText = game.add.text(20, 10, "Score: 0", {
-			font: "40px Indie Flower",
+			font: "40px Indie ASDF Flower",
 			align: "center",
 			fill: "#fff",
 		});
 
 		animalsBreedingText = game.add.text(breeder.x, breeder.y, "# animals: 0", {
-			font: "30px Indie Flower",
+			font: "30px Indie ASDF Flower",
 			align: "center",
 			fill: "#fff",
 		});
 
-		addScore(0);
+		timeText = game.add.text(game.width - 260, 10, "Time Left: 60", {
+			font: "40px Indie ASDF Flower",
+			align: "center",
+			fill: "#fff",
+		});
+
+
 		lastBabyTime = game.time.now;
-		babyEvent = game.time.events.loop(50, spawnBabiesIfPossible);
+		babyEvent = game.time.events.loop(20, spawnBabiesIfPossible);
+
+		countDown = game.time.events.loop(100, countDownTime);
 
 	},
 
@@ -67,6 +76,14 @@ MainState.Level.prototype = {
 	}
 
 };
+
+function countDownTime(){
+	timeLeft -= .1;
+	timeText.text = "Time Left: " + game.math.floor(timeLeft);
+	if(timeLeft <= 0){
+		game.state.start('menu_gameover');
+	}
+}
 
 function addScore(value){
 	score += value;
@@ -82,7 +99,7 @@ function addAnimalsBreeding(value){
 }
 
 function spawnBabiesIfPossible(){
-	if(animalsBreeding > 1 && game.time.now - lastBabyTime > 5000 - game.math.floor(animalsBreeding / 2) * 100){
+	if(animalsBreeding > 1 && game.time.now - lastBabyTime > 5000 - game.math.floor(animalsBreeding / 2) * 200){
 		lastBabyTime = game.time.now;
 		spawnBaby();
 	}
